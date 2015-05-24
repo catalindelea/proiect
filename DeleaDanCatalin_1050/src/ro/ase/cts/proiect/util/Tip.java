@@ -1,4 +1,4 @@
-package ro.ase.csie.cts.proiect.entity;
+package ro.ase.cts.proiect.util;
 
 public enum Tip {
 	Persoana, Angajat
