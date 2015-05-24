@@ -4,7 +4,7 @@ import java.util.Date;
 
 import ro.ase.csie.cts.proiect.entity.Angajat;
 import ro.ase.csie.cts.proiect.entity.Persoana;
-import ro.ase.cts.proiect.util.Tip;
+import ro.ase.csie.cts.proiect.util.Tip;
 
 public class Factory {
 	public Persoana creazaPersoana(Tip tip, String cnp, String nume,

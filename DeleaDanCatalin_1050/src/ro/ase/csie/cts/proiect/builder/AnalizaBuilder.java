@@ -1,7 +1,7 @@
 package ro.ase.csie.cts.proiect.builder;
 
 import ro.ase.csie.cts.proiect.entity.Analiza;
-import ro.ase.cts.proiect.util.TipAnalize;
+import ro.ase.csie.cts.proiect.util.TipAnalize;
 
 public class AnalizaBuilder {
 	private Analiza analiza = null;

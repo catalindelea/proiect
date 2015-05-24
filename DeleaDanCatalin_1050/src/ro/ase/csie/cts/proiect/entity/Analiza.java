@@ -5,7 +5,7 @@ import java.util.Date;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
-import ro.ase.cts.proiect.util.TipAnalize;
+import ro.ase.csie.cts.proiect.util.TipAnalize;
 
 public class Analiza {
 	private Date dataAnaliza;
