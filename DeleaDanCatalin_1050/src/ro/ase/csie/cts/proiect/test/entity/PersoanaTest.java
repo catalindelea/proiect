@@ -33,12 +33,13 @@ public class PersoanaTest {
 		while ((linie = reader.readLine()) != null) {
 			if (linie.startsWith("#"))
 				continue;
-				String[] valori = linie.split("\t");
-				String cnp = valori[0];
-				String nume = valori[1];
-				String prenume = valori[2];
-				p = new Persoana(cnp, nume, prenume);
-				break;
+			String[] valori = linie.split("\t");
+			String cnp = valori[0];
+			String nume = valori[1];
+			String prenume = valori[2];
+//			p = new Persoana(cnp, nume, prenume);
+			p = new Persoana("1930523340442", "Delea", "Catalin");
+			break;
 		}
 		reader.close();
 	}
@@ -126,53 +127,52 @@ public class PersoanaTest {
 			e.printStackTrace();
 		}
 		boolean isGood = false;
-		String county = p.getCnp().charAt(7)+""+p.getCnp().charAt(8)+"";
+		String county = p.getCnp().charAt(7) + "" + p.getCnp().charAt(8) + "";
 		for (String s : possibleCountys) {
-			
+
 			if (county.equalsIgnoreCase(s)) {
 				isGood = true;
 			}
 		}
 		assertFalse("Cnp-ul trebuie sa contina un judet valid", !isGood);
 	}
-	
+
 	@Test
-	public void lastNameNotNull(){
-		if (p.getNume()==null) {
+	public void lastNameNotNull() {
+		if (p.getNume() == null) {
 			assertFalse("Numele nu poate fi null", true);
 		}
 	}
-	
+
 	@Test
-	public void invalidLastNameInConstructor(){
+	public void invalidLastNameInConstructor() {
 		assertFalse("Numele trebuie sa inceapa cu litera mare", !Character.isUpperCase(p.getNume().charAt(0)));
 	}
-	
+
 	@Test
-	public void firstNameNotNull(){
-		if (p.getPrenume()==null) {
+	public void firstNameNotNull() {
+		if (p.getPrenume() == null) {
 			assertFalse("Preumele nu poate fi null", true);
 		}
 	}
-	
+
 	@Test
-	public void invalidFirstNameInConstructor(){
+	public void invalidFirstNameInConstructor() {
 		assertFalse("Preumele trebuie sa inceapa cu litera mare", !Character.isUpperCase(p.getPrenume().charAt(0)));
 	}
-	
+
 	@Test
 	public void getSexFromCnpExpectedValue() {
 		assertEquals("Valoare invalida pentru getSex()", "Male", p.getSex());
 	}
-	
+
 	@Test
 	public void getJudetFromCnpExpectedValue() {
 		assertEquals("Valoare invalida pentru getSex()", "Teleorman", p.getJudet());
 	}
-	
-	
+
 	@Test
-	public void getDataNastereCnpExpectedValue(){
+	public void getDataNastereCnpExpectedValue() {
 		try {
 			Date expectedDate = new SimpleDateFormat("yyyyMMdd").parse("19930523");
 			assertEquals("Valoare invalida pentru data", expectedDate, p.getDataNastere());
@@ -180,19 +180,19 @@ public class PersoanaTest {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test
-	public void getAnNastereExpectedValue(){
+	public void getAnNastereExpectedValue() {
 		assertEquals("Anul returnat nu este corect", 1993, p.getAnNastere());
 	}
-	
+
 	@Test
-	public void getLunaNastereExpectedValue(){
+	public void getLunaNastereExpectedValue() {
 		assertEquals("Luna returnata nu este corecta", 5, p.getLunaNastere());
 	}
-	
+
 	@Test
-	public void getZiNastereExpectedValue(){
+	public void getZiNastereExpectedValue() {
 		assertEquals("Ziua returnata nu este corecta", 23, p.getZiNastere());
 	}
 }

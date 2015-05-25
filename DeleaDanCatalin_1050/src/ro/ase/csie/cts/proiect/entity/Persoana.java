@@ -17,13 +17,26 @@ import java.util.List;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
+import ro.ase.csie.cts.proiect.exceptions.CnpNotValidExcetion;
+import ro.ase.csie.cts.proiect.exceptions.NumeNotValidException;
+import ro.ase.csie.cts.proiect.exceptions.PrenumeNotValidException;
+import ro.ase.csie.cts.proiect.validators.*;
+
+
 public class Persoana {
 	private String cnp;
 	private String nume;
 	private String prenume;
 	private List<Analiza> istroicAnalize;
 
-	public Persoana(String cnp, String nume, String prenume) {
+	public Persoana(String cnp, String nume, String prenume) throws CnpNotValidExcetion, NumeNotValidException, PrenumeNotValidException {
+		if (!CnpValidator.cnpIsValid(cnp)) 
+			throw new CnpNotValidExcetion();
+		if (!NumeValidator.numeIsValid(nume))
+			throw new NumeNotValidException();
+		if (!NumeValidator.numeIsValid(prenume))
+			throw new PrenumeNotValidException();
+
 		this.cnp = cnp;
 		this.nume = nume;
 		this.prenume = prenume;
@@ -34,24 +47,30 @@ public class Persoana {
 		return nume;
 	}
 
-	public void setNume(String nume) {
-		this.nume = nume;
+	public void setNume(String nume) throws NumeNotValidException {
+		if (!NumeValidator.numeIsValid(nume))
+			throw new NumeNotValidException();
+			this.nume = nume;
 	}
 
 	public String getPrenume() {
 		return prenume;
 	}
 
-	public void setPrenume(String prenume) {
-		this.prenume = prenume;
+	public void setPrenume(String prenume) throws PrenumeNotValidException {
+		if (!NumeValidator.numeIsValid(prenume))
+			throw new PrenumeNotValidException();
+			this.prenume = prenume;
 	}
 
 	public String getCnp() {
 		return cnp;
 	}
 	
-	public void setCnp(String cnp) {
-		this.cnp = cnp;
+	public void setCnp(String cnp) throws CnpNotValidExcetion {
+		if (!CnpValidator.cnpIsValid(cnp)) 
+			throw new CnpNotValidExcetion();
+			this.cnp = cnp;
 	}
 
 	public List<Analiza> getIstroicAnalize() {

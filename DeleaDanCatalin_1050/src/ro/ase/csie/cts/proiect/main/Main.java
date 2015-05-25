@@ -5,6 +5,9 @@ import java.util.Date;
 import ro.ase.csie.cts.proiect.builder.AnalizaBuilder;
 import ro.ase.csie.cts.proiect.entity.Analiza;
 import ro.ase.csie.cts.proiect.entity.Persoana;
+import ro.ase.csie.cts.proiect.exceptions.CnpNotValidExcetion;
+import ro.ase.csie.cts.proiect.exceptions.NumeNotValidException;
+import ro.ase.csie.cts.proiect.exceptions.PrenumeNotValidException;
 import ro.ase.csie.cts.proiect.factory.Factory;
 import ro.ase.csie.cts.proiect.util.Tip;
 import ro.ase.csie.cts.proiect.util.TipAnalize;
@@ -13,7 +16,19 @@ public class Main {
 
 	public static void main(String[] args) {
 		Factory persoaneFactory = new Factory();
-		Persoana p1 = persoaneFactory.creazaPersoana(Tip.Persoana,"1930523340442", "Delea", "Catalin",new Date());
+		Persoana p1 = null;
+		try {
+			p1 = persoaneFactory.creazaPersoana(Tip.Persoana,"1930523340442", "Delea", "Catalin",new Date());
+		} catch (CnpNotValidExcetion e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NumeNotValidException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (PrenumeNotValidException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String sex = p1.getSex();
 		Date dataNastere = p1.getDataNastere();
 		String judet = p1.getJudet();
@@ -31,7 +46,19 @@ public class Main {
 		System.out.println(a1);
 		
 		
-		Persoana p2 = persoaneFactory.creazaPersoana(Tip.Angajat,"2910322454552", "Popescu", "Maria",new Date());
+		Persoana p2 = null;
+		try {
+			p2 = persoaneFactory.creazaPersoana(Tip.Angajat,"2910322454552", "Popescu", "Maria",new Date());
+		} catch (CnpNotValidExcetion e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NumeNotValidException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (PrenumeNotValidException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		sex = p2.getSex();
 		dataNastere = p2.getDataNastere();
 		judet = p2.getJudet();

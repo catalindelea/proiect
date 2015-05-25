@@ -12,6 +12,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import ro.ase.csie.cts.proiect.entity.Persoana;
+import ro.ase.csie.cts.proiect.exceptions.CnpNotValidExcetion;
 
 public class PersoanaTestAutomate {
 	static Persoana p;
@@ -35,7 +36,7 @@ public class PersoanaTestAutomate {
 	}
 
 	@Test(timeout = 1000)
-	public void testGetSex() throws IOException, InterruptedException {
+	public void testGetSex() throws IOException, InterruptedException, CnpNotValidExcetion {
 //		Thread.sleep(1001);
 		File file = new File("fisiere/normalValuesGenderCnp");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -57,7 +58,7 @@ public class PersoanaTestAutomate {
 	}
 	
 	@Test
-	public void testGetJudet() throws IOException {
+	public void testGetJudet() throws IOException, CnpNotValidExcetion {
 		File file = new File("fisiere/normalValuesJudetCnp");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String linie = null;
@@ -79,7 +80,7 @@ public class PersoanaTestAutomate {
 	
 	@Test
 	@Ignore("Doar pentru a verifica daca merge adnotarea @Ignore")
-	public void testGetAnNastere() throws IOException {
+	public void testGetAnNastere() throws IOException, CnpNotValidExcetion {
 		File file = new File("fisiere/normalValuesAnNastereCnp");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String linie = null;
@@ -100,7 +101,7 @@ public class PersoanaTestAutomate {
 	}
 	
 	@Test
-	public void testGetLunaNastere() throws IOException {
+	public void testGetLunaNastere() throws IOException, CnpNotValidExcetion {
 		File file = new File("fisiere/normalValuesLunaNastereCnp");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String linie = null;
@@ -121,7 +122,7 @@ public class PersoanaTestAutomate {
 	}
 	
 	@Test
-	public void testGetZiNastere() throws IOException {
+	public void testGetZiNastere() throws IOException, CnpNotValidExcetion {
 		File file = new File("fisiere/normalValuesZiNastereCnp");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String linie = null;
@@ -142,7 +143,7 @@ public class PersoanaTestAutomate {
 	}
 	
 	@Test
-	public void testVerificaCnp() throws IOException {
+	public void testVerificaCnp() throws IOException, CnpNotValidExcetion {
 		File file = new File("fisiere/normalValuesVerificaCnp");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String linie = null;
