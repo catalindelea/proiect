@@ -49,6 +49,10 @@ public class Persoana {
 	public String getCnp() {
 		return cnp;
 	}
+	
+	public void setCnp(String cnp) {
+		this.cnp = cnp;
+	}
 
 	public List<Analiza> getIstroicAnalize() {
 		return istroicAnalize;

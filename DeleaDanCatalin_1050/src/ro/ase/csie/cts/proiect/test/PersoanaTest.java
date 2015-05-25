@@ -3,8 +3,10 @@ package ro.ase.csie.cts.proiect.test;
 import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -25,7 +27,20 @@ public class PersoanaTest {
 
 	@Before
 	public void setUp() throws Exception {
-		p = new Persoana("1930523340442", "Delea", "Catalin");
+		File file = new File("normalValuesCnp");
+		BufferedReader reader = new BufferedReader(new FileReader(file));
+		String linie = null;
+		while ((linie = reader.readLine()) != null) {
+			if (linie.startsWith("#"))
+				continue;
+				String[] valori = linie.split("\t");
+				String cnp = valori[0];
+				String nume = valori[1];
+				String prenume = valori[2];
+				p = new Persoana(cnp, nume, prenume);
+				break;
+		}
+		reader.close();
 	}
 
 	public BufferedReader openFile(String nume) {
@@ -151,6 +166,12 @@ public class PersoanaTest {
 	}
 	
 	@Test
+	public void getJudetFromCnpExpectedValue() {
+		assertEquals("Valoare invalida pentru getSex()", "Teleorman", p.getJudet());
+	}
+	
+	
+	@Test
 	public void getDataNastereCnpExpectedValue(){
 		try {
 			Date expectedDate = new SimpleDateFormat("yyyyMMdd").parse("19930523");
@@ -174,5 +195,4 @@ public class PersoanaTest {
 	public void getZiNastereExpectedValue(){
 		assertEquals("Ziua returnata nu este corecta", 23, p.getZiNastere());
 	}
-	
 }
