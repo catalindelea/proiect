@@ -17,7 +17,7 @@ public class PersoanaTestAutomate {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		File file = new File("normalValuesCnp");
+		File file = new File("fisiere/normalValuesCnp");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String linie = null;
 		while ((linie = reader.readLine()) != null) {
@@ -35,7 +35,7 @@ public class PersoanaTestAutomate {
 
 	@Test
 	public void testGetSex() throws IOException {
-		File file = new File("normalValuesGenderCnp");
+		File file = new File("fisiere/normalValuesGenderCnp");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String linie = null;
 		while ((linie = reader.readLine()) != null) {
@@ -56,7 +56,7 @@ public class PersoanaTestAutomate {
 	
 	@Test
 	public void testGetJudet() throws IOException {
-		File file = new File("normalValuesJudetCnp");
+		File file = new File("fisiere/normalValuesJudetCnp");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String linie = null;
 		while ((linie = reader.readLine()) != null) {
@@ -77,7 +77,7 @@ public class PersoanaTestAutomate {
 	
 	@Test
 	public void testGetAnNastere() throws IOException {
-		File file = new File("normalValuesAnNastereCnp");
+		File file = new File("fisiere/normalValuesAnNastereCnp");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String linie = null;
 		while ((linie = reader.readLine()) != null) {
@@ -98,7 +98,7 @@ public class PersoanaTestAutomate {
 	
 	@Test
 	public void testGetLunaNastere() throws IOException {
-		File file = new File("normalValuesLunaNastereCnp");
+		File file = new File("fisiere/normalValuesLunaNastereCnp");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String linie = null;
 		while ((linie = reader.readLine()) != null) {
@@ -119,7 +119,7 @@ public class PersoanaTestAutomate {
 	
 	@Test
 	public void testGetZiNastere() throws IOException {
-		File file = new File("normalValuesZiNastereCnp");
+		File file = new File("fisiere/normalValuesZiNastereCnp");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String linie = null;
 		while ((linie = reader.readLine()) != null) {
@@ -140,7 +140,7 @@ public class PersoanaTestAutomate {
 	
 	@Test
 	public void testVerificaCnp() throws IOException {
-		File file = new File("normalValuesVerificaCnp");
+		File file = new File("fisiere/normalValuesVerificaCnp");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String linie = null;
 		while ((linie = reader.readLine()) != null) {

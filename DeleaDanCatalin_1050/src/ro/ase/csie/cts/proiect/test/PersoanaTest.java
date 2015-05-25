@@ -1,6 +1,7 @@
 package ro.ase.csie.cts.proiect.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,7 +27,7 @@ public class PersoanaTest {
 
 	@Before
 	public void setUp() throws Exception {
-		File file = new File("normalValuesCnp");
+		File file = new File("fisiere/normalValuesCnp");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String linie = null;
 		while ((linie = reader.readLine()) != null) {
@@ -74,7 +74,7 @@ public class PersoanaTest {
 
 	@Test
 	public void invalidGenderOrNegativeCnp() {
-		BufferedReader br = openFile("sex");
+		BufferedReader br = openFile("fisiere/sex");
 		String linie;
 		List<String> possibleGenders = new ArrayList<String>();
 		try {
@@ -115,7 +115,7 @@ public class PersoanaTest {
 
 	@Test
 	public void invalidCountyCnp() {
-		BufferedReader br = openFile("judet");
+		BufferedReader br = openFile("fisiere/judet");
 		String line;
 		List<String> possibleCountys = new ArrayList<String>();
 		try {

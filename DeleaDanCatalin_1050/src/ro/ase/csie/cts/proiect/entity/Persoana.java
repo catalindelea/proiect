@@ -73,7 +73,7 @@ public class Persoana {
 
 	public String getSex() {
 		String linie;
-		BufferedReader br = openFile("sex");
+		BufferedReader br = openFile("fisiere/sex");
 		try {
 			while ((linie = br.readLine()) != null) {
 				if (linie.split("%")[0].equalsIgnoreCase(this.getCnp().substring(0,1))) {
@@ -138,7 +138,7 @@ public class Persoana {
 	
 	public String getJudet(){
 		String linie;
-		BufferedReader br = openFile("judet");
+		BufferedReader br = openFile("fisiere/judet");
 		try {
 			while ((linie = br.readLine()) != null) {
 				if (linie.substring(0,2).equalsIgnoreCase(this.getCnp().substring(7,9))) {
