@@ -14,6 +14,11 @@ public class Analiza {
 	private float inaltime;
 	private TipAnalize setAnalize;
 	
+	public Analiza(String descriere){
+		dataAnaliza = new Date();
+		this.descriere = descriere;
+	}
+	
 	public float getInaltime() {
 		return inaltime;
 	}
@@ -32,11 +37,6 @@ public class Analiza {
 
 	public void setGreutate(float greutate) {
 		this.greutate = greutate;
-	}
-
-	public Analiza(String descriere){
-		dataAnaliza = new Date();
-		this.descriere = descriere;
 	}
 	
 	public Date getDataAnaliza() {

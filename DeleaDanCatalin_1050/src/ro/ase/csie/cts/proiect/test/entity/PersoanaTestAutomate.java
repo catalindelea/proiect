@@ -1,4 +1,4 @@
-package ro.ase.csie.cts.proiect.test;
+package ro.ase.csie.cts.proiect.test.entity;
 
 import static org.junit.Assert.assertEquals;
 
