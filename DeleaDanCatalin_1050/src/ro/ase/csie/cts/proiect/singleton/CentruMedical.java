@@ -13,7 +13,7 @@ public class CentruMedical {
 		persoane = new ArrayList<Persoana>();
 	}
 	
-	public CentruMedical getInstance(){
+	public static CentruMedical getInstance(){
 		if (centru == null) 
 			centru = new CentruMedical();
 		return centru;

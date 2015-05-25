@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import ro.ase.csie.cts.proiect.entity.Persoana;
@@ -33,8 +34,9 @@ public class PersoanaTestAutomate {
 		reader.close();
 	}
 
-	@Test
-	public void testGetSex() throws IOException {
+	@Test(timeout = 1000)
+	public void testGetSex() throws IOException, InterruptedException {
+//		Thread.sleep(1001);
 		File file = new File("fisiere/normalValuesGenderCnp");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String linie = null;
@@ -76,6 +78,7 @@ public class PersoanaTestAutomate {
 	}
 	
 	@Test
+	@Ignore("Doar pentru a verifica daca merge adnotarea @Ignore")
 	public void testGetAnNastere() throws IOException {
 		File file = new File("fisiere/normalValuesAnNastereCnp");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
