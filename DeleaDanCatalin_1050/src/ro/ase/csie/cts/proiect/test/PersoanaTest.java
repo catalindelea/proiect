@@ -25,7 +25,7 @@ public class PersoanaTest {
 
 	@Before
 	public void setUp() throws Exception {
-		p = new Persoana("1930523340442", "Asd", "Asd");
+		p = new Persoana("1930523340442", "Delea", "Catalin");
 	}
 
 	public BufferedReader openFile(String nume) {
@@ -153,10 +153,26 @@ public class PersoanaTest {
 	@Test
 	public void getDataNastereCnpExpectedValue(){
 		try {
-			Date expectedDate = new SimpleDateFormat("yyMMdd").parse("930523");
+			Date expectedDate = new SimpleDateFormat("yyyyMMdd").parse("19930523");
 			assertEquals("Valoare invalida pentru data", expectedDate, p.getDataNastere());
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void getAnNastereExpectedValue(){
+		assertEquals("Anul returnat nu este corect", 1993, p.getAnNastere());
+	}
+	
+	@Test
+	public void getLunaNastereExpectedValue(){
+		assertEquals("Luna returnata nu este corecta", 5, p.getLunaNastere());
+	}
+	
+	@Test
+	public void getZiNastereExpectedValue(){
+		assertEquals("Ziua returnata nu este corecta", 23, p.getZiNastere());
+	}
+	
 }

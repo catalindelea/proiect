@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -90,6 +91,45 @@ public class Persoana {
 			e.printStackTrace();
 		}
 		return dataNastere;
+	}
+	
+	public int getAnNastere(){
+		String data = this.cnp.substring(1, 7);
+		SimpleDateFormat dataNastere=null;
+		Calendar cal = Calendar.getInstance();
+		try {
+			dataNastere = new SimpleDateFormat("yyMMdd");
+			cal.setTime(dataNastere.parse(data));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return cal.get(Calendar.YEAR);
+	}
+	
+	public int getLunaNastere(){
+		String data = this.cnp.substring(1, 7);
+		SimpleDateFormat dataNastere=null;
+		Calendar cal = Calendar.getInstance();
+		try {
+			dataNastere = new SimpleDateFormat("yyMMdd");
+			cal.setTime(dataNastere.parse(data));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return cal.get(Calendar.MONTH)+1;
+	}
+	
+	public int getZiNastere(){
+		String data = this.cnp.substring(1, 7);
+		SimpleDateFormat dataNastere=null;
+		Calendar cal = Calendar.getInstance();
+		try {
+			dataNastere = new SimpleDateFormat("yyMMdd");
+			cal.setTime(dataNastere.parse(data));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return cal.get(Calendar.DAY_OF_MONTH);
 	}
 	
 	public String getJudet(){
