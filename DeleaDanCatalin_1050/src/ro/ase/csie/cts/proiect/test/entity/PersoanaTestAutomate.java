@@ -35,9 +35,8 @@ public class PersoanaTestAutomate {
 		reader.close();
 	}
 
-	@Test(timeout = 1000)
+	@Test
 	public void testGetSex() throws IOException, InterruptedException, CnpNotValidExcetion {
-//		Thread.sleep(1001);
 		File file = new File("fisiere/normalValuesGenderCnp");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String linie = null;

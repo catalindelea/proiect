@@ -57,8 +57,9 @@ public class PersoanaTest {
 		return br;
 	}
 
-	@Test
-	public void cnpNotNumericFormat() {
+	@Test(timeout = 1000)
+	public void cnpNotNumericFormat() throws InterruptedException {
+		Thread.sleep(1100);
 		try {
 			Long cnpNumeric = Long.parseLong(p.getCnp());
 		} catch (Exception e) {
