@@ -8,24 +8,24 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.NotActiveException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import junit.framework.TestCase;
-
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import ro.ase.csie.cts.proiect.entity.Persoana;
-import ro.ase.csie.cts.proiect.exceptions.NotNumericValue;
 
 public class PersoanaTest {
 	Persoana p;
 
 	@Before
 	public void setUp() throws Exception {
-		p = new Persoana("4999999999999", "asd", "asd");
+		p = new Persoana("1930523340442", "Asd", "Asd");
 	}
 
 	public BufferedReader openFile(String nume) {
@@ -58,7 +58,7 @@ public class PersoanaTest {
 	}
 
 	@Test
-	public void invalidGenderCnp() {
+	public void invalidGenderOrNegativeCnp() {
 		BufferedReader br = openFile("sex");
 		String linie;
 		List<String> possibleGenders = new ArrayList<String>();
@@ -69,12 +69,94 @@ public class PersoanaTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		boolean isGood=false;
-		for (String s:possibleGenders){
-			if ((p.getCnp().charAt(0)+"").equalsIgnoreCase(s)){
-				isGood=true;
+		boolean isGood = false;
+		for (String s : possibleGenders) {
+			if ((p.getCnp().charAt(0) + "").equalsIgnoreCase(s)) {
+				isGood = true;
 			}
 		}
 		assertFalse("Cnp-ul trebuie sa inceapa cu cifre de la 1 la 6", !isGood);
+	}
+
+	@Test
+	public void invalidMonthCnp() {
+		int luna = Integer.parseInt(p.getCnp().charAt(3) + "" + p.getCnp().charAt(4) + "");
+		if (luna > 12) {
+			assertFalse("valoarea lunii din cnp nu poate fi peste 12", true);
+		}
+	}
+
+	@Test
+	public void invalidDayCnp() {
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd");
+			sdf.setLenient(false);
+			Date dataNasterii = sdf.parse(p.getCnp().substring(1, 7));
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			assertFalse("Data nasterii din cnp nu este valida", true);
+		}
+	}
+
+	@Test
+	public void invalidCountyCnp() {
+		BufferedReader br = openFile("judet");
+		String line;
+		List<String> possibleCountys = new ArrayList<String>();
+		try {
+			while ((line = br.readLine()) != null) {
+				possibleCountys.add(line.split("\t")[0]);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		boolean isGood = false;
+		String county = p.getCnp().charAt(7)+""+p.getCnp().charAt(8)+"";
+		for (String s : possibleCountys) {
+			
+			if (county.equalsIgnoreCase(s)) {
+				isGood = true;
+			}
+		}
+		assertFalse("Cnp-ul trebuie sa contina un judet valid", !isGood);
+	}
+	
+	@Test
+	public void lastNameNotNull(){
+		if (p.getNume()==null) {
+			assertFalse("Numele nu poate fi null", true);
+		}
+	}
+	
+	@Test
+	public void invalidLastNameInConstructor(){
+		assertFalse("Numele trebuie sa inceapa cu litera mare", !Character.isUpperCase(p.getNume().charAt(0)));
+	}
+	
+	@Test
+	public void firstNameNotNull(){
+		if (p.getPrenume()==null) {
+			assertFalse("Preumele nu poate fi null", true);
+		}
+	}
+	
+	@Test
+	public void invalidFirstNameInConstructor(){
+		assertFalse("Preumele trebuie sa inceapa cu litera mare", !Character.isUpperCase(p.getPrenume().charAt(0)));
+	}
+	
+	@Test
+	public void getSexFromCnpExpectedValue() {
+		assertEquals("Valoare invalida pentru getSex()", "Male", p.getSex());
+	}
+	
+	@Test
+	public void getDataNastereCnpExpectedValue(){
+		try {
+			Date expectedDate = new SimpleDateFormat("yyMMdd").parse("930523");
+			assertEquals("Valoare invalida pentru data", expectedDate, p.getDataNastere());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 }
