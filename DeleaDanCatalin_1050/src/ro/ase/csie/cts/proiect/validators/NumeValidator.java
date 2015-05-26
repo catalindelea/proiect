@@ -7,8 +7,8 @@ public class NumeValidator {
 		if (nume.length()<=2)
 			isValid = false;
 		
-//		if (!(Character.isUpperCase(nume.charAt(0)))) 
-//			isValid = false;
+		if (!(Character.isUpperCase(nume.charAt(0)))) 
+			isValid = false;
 		
 		return isValid;
 	}

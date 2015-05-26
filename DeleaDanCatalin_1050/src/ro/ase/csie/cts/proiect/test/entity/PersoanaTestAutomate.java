@@ -157,7 +157,7 @@ public class PersoanaTestAutomate {
 				continue;
 			p.setCnp(valori[0]);
 			boolean valid = Boolean.parseBoolean(valori[1]);
-			assertEquals("Testare getJudet()", valid, p.verificaCnp());
+			assertEquals("Testare getJudet()", valid, p.cnpIsValid());
 		}
 		reader.close();
 	}

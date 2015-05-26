@@ -30,7 +30,7 @@ public class Main {
 		System.out.println("p1 este "+sex);
 		System.out.println("nascut pe "+dataNastere);
 		System.out.println("in judetul "+judet);
-		System.out.println("CNP este valid: "+p1.verificaCnp());
+		System.out.println("CNP este valid: "+p1.cnpIsValid());
 		Analiza a1 = new AnalizaBuilder("Set analize rutina")
 						.setGreutate(65.0f)
 						.setInaltime(179f)
@@ -54,7 +54,7 @@ public class Main {
 		System.out.println("p2 este "+sex);
 		System.out.println("nascut pe "+dataNastere);
 		System.out.println("in judetul "+judet);
-		System.out.println("CNP este valid: "+p1.verificaCnp());
+		System.out.println("CNP este valid: "+p1.cnpIsValid());
 		Analiza a2 = new AnalizaBuilder("Set analize biliare")
 						.setGreutate(72.0f)
 						.setInaltime(165f)

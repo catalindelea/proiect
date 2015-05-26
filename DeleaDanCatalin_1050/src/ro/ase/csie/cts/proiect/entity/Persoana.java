@@ -170,7 +170,7 @@ public class Persoana {
 		return null;
 	}
 	
-	public boolean verificaCnp(){
+	public boolean cnpIsValid(){
 		int s=0;
 		 String number="279146358279";
 		for(int i=0;i<12;i++){
