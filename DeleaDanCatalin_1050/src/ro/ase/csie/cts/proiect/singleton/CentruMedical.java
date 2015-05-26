@@ -18,4 +18,12 @@ public class CentruMedical {
 			centru = new CentruMedical();
 		return centru;
 	}
+	
+	public void addPersoana(Persoana p) {
+		persoane.add(p);
+	}
+	
+	public List<Persoana> getListaPersoane() {
+		return persoane;
+	}
 }
